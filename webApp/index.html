@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Readings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Weight Readings</h1>
+        <p>Current weight: <span id="weight">0</span> grams</p>
+    </div>
+    <script>
+        setInterval(() => {
+            fetch('/reading')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('weight').innerText = data;
+                });
+        }, 1000);
+    </script>
+</body>
+</html>
